@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZK-Pass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="popup.js"></script>
+  <style>
+    body {
+      width: 320px;
+      height: 420px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 30% 30%, #1e1b4b, #0f172a 80%);
+      color: #e2e8f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* animated glow rings */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+      animation: drift 10s infinite alternate ease-in-out;
+    }
+    body::before {
+      width: 300px; height: 300px;
+      top: -100px; left: -100px;
+    }
+    body::after {
+      width: 400px; height: 400px;
+      bottom: -150px; right: -150px;
+      animation-delay: 3s;
+    }
+    @keyframes drift {
+      from { transform: translate(0,0) scale(1); opacity: 0.8; }
+      to { transform: translate(20px, 20px) scale(1.2); opacity: 0.5; }
+    }
+
+    /* futuristic card */
+    .card {
+      background: rgba(30, 27, 75, 0.85);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(99,102,241,0.15);
+      padding: 28px 22px;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .card h2 {
+      color: #f1f5f9;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* glowing border on hover */
+    .card:hover {
+      box-shadow: 0 0 25px rgba(99,102,241,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* glowing shield */
+    .glow-circle {
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.4);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 0 12px rgba(99,102,241,0.3);
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 12px rgba(99,102,241,0.3); transform: scale(1); }
+      50% { box-shadow: 0 0 24px rgba(99,102,241,0.6); transform: scale(1.05); }
+    }
+
+    /* input + button styling */
+    .pin-input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #f8fafc;
+      border-radius: 0.75rem;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+    }
+
+    .pin-input:focus {
+      border-color: #818cf8;
+      box-shadow: 0 0 10px rgba(99,102,241,0.4);
+      background: rgba(255,255,255,0.08);
+    }
+
+    #verifyBtn {
+      background: linear-gradient(90deg, #4f46e5, #6366f1);
+      color: white;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      padding: 12px;
+      width: 100%;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    #verifyBtn:hover {
+      box-shadow: 0 0 18px rgba(99,102,241,0.5);
+      transform: translateY(-1px);
+    }
+
+    #verifyBtn:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    #status {
+      min-height: 22px;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      padding: 4px 0;
+    }
+
+    /* waiting state */
+    .awaiting-simple {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1;
+      padding: 20px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .awaiting-simple p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Improved spacing for text elements */
+    .text-slate-400 {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Enhanced status message styling */
+    .status-success {
+      color: #10b981;
+    }
+
+    .status-error {
+      color: #ef4444;
+    }
+
+    .status-info {
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Waiting for request -->
+  <div id="awaitingViewSimple" class="awaiting-simple">
+    <div class="glow-circle">
+      <i class="fa-solid fa-shield-halved text-indigo-400 text-3xl"></i>
+    </div>
+    <h2 class="text-slate-100 text-lg font-semibold mb-1">Awaiting Request</h2>
+    <p>Listening for verification...</p>
+  </div>
+
+  <!-- Verification card -->
+  <div id="activeViewCard" class="card hidden">
+    <div id="activeView" class="flex flex-col">
+      <div class="mb-4">
+        <h2 class="text-lg font-semibold mb-1">PIN Verification</h2>
+        <p class="text-slate-400 text-sm">Prove age ≥ <span id="minAgeValue">18</span></p>
+      </div>
+
+      <input
+        id="pinInput"
+        type="password"
+        maxlength="8"
+        placeholder="••••"
+        class="pin-input"
+      />
+
+      <button id="verifyBtn">Verify</button>
+      <div id="status" class="text-indigo-400 font-medium"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  
+  <script>
+    // Simple demo functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const awaitingView = document.getElementById('awaitingViewSimple');
+      const activeViewCard = document.getElementById('activeViewCard');
+      const pinInput = document.getElementById('pinInput');
+      const verifyBtn = document.getElementById('verifyBtn');
+      const status = document.getElementById('status');
+      
+      // Simulate receiving a verification request after 1 second
+      setTimeout(() => {
+        awaitingView.classList.add('hidden');
+        activeViewCard.classList.remove('hidden');
+      }, 1000);
+      
+      // Handle verification button click
+      verifyBtn.addEventListener('click', function() {
+        const pin = pinInput.value;
+        
+        if (pin.length < 4) {
+          status.textContent = 'Please enter a valid PIN';
+          status.className = 'status-error';
+          return;
+        }
+        
+        status.textContent = 'Verifying...';
+        status.className = 'status-info';
+        
+        // Simulate verification process
+        setTimeout(() => {
+          if (pin === '1234') {
+            status.textContent = 'Verification successful!';
+            status.className = 'status-success';
+          } else {
+            status.textContent = 'Verification failed. Try again.';
+            status.className = 'status-error';
+          }
+        }, 1500);
+      });
+      
+      // Clear status when user starts typing
+      pinInput.addEventListener('input', function() {
+        status.textContent = '';
+      });
+    });
+  </script>
+</body>
+</html>
