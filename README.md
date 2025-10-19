@@ -4,14 +4,17 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
 - [Step 1: Hardware Assembly](#step-1-hardware-assembly)
 - [Step 2: Program the ESP32](#step-2-program-the-esp32)
 - [Step 3: Configure the ESP32](#step-3-configure-the-esp32)
 - [Step 4: Run the Backend Server](#step-4-run-the-backend-server)
 - [Step 5: Install the Chrome Extension](#step-5-install-the-chrome-extension)
 - [Step 6: Launch the Demo](#step-6-launch-the-demo)
+- [Security & Privacy Overview](#security--privacy-overview)
+- [Author & Contact](#author--contact)
 - [License](#license)
+
+---
 
 ### Hardware
 
@@ -143,6 +146,27 @@ You can now test the full system.
 1. Make sure the backend server from **Step 4** is still running.
 2. Open the file `zkpass-web/demo/index.html` in **Google Chrome**.
 3. You should now be able to interact with the demo page and see the zkPass protocol in action!
+
+
+## Security & Privacy Overview
+
+**Why zkPass Matters**
+
+zkPass leverages **Zero-Knowledge Proofs (ZKPs)** to enable strong, privacy-preserving authentication. With ZKPs, a user can prove they possess valid credentials **without revealing the credentials themselves**—eliminating risks of phishing, replay attacks, and credential theft.
+
+**End-to-End Hardware Security**
+
+- All sensitive cryptographic operations—including key generation, AES-256 encryption, and ZKP computations—are performed **entirely within the ESP32’s secure environment**.
+- **No private data ever leaves the device**. Credentials, keys, and intermediate values remain isolated in the ESP32’s memory.
+- Communication with the backend and browser is limited to **public challenges and zero-knowledge responses**, ensuring zero leakage of personal or identifying information.
+- The system uses **AES-256** for internal data protection, aligned with modern cryptographic best practices.
+
+This design ensures that even if the host computer or network is compromised, your identity remains safe.
+
+## Author & Contact
+
+Developed with care by **Sadra Milani Moghaddam**.  
+🌐 Learn more at: [https://sadramilani.ir](https://sadramilani.ir)
 
 ## License
 
