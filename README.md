@@ -105,20 +105,18 @@ Follow any on-screen prompts to complete the configuration.
 
 ---
 
-### Run the Backend Server
-
-```markdown
 ## Step 4: Run the Backend Server
 
 The backend server manages communication between the ESP32 and the web client.
 
-1. Navigate to the backend directory:
+   Navigate to the backend directory:
    ```bash
    cd zkpass-web/backend
    ```
    Start the server:
    ```bash
    cd zkpass-web/backend
+   python server.py
    ```
-   
+
    
