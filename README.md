@@ -86,9 +86,10 @@ Connect the components using the I2C interface as follows:
 
 ## Step 3: Configure the ESP32
 
+Navigate to the backend directory:
 Install Python dependencies:
 ```bash
-pip install -r ../../requirements.txt
+pip install -r requirements.txt
 ```
 
 This step sends the necessary configuration from your computer to the freshly programmed ESP32.
@@ -110,13 +111,39 @@ Follow any on-screen prompts to complete the configuration.
 The backend server manages communication between the ESP32 and the web client.
 
    Navigate to the backend directory:
-   ```bash
-   cd zkpass-web/backend
-   ```
    Start the server:
    ```bash
    cd zkpass-web/backend
    python server.py
    ```
+   "Keep this terminal window open. The server is now running and listening for requests."
 
-   
+---
+
+
+## Step 5: Install the Chrome Extension
+
+The extension allows the web demo to interface with the backend.
+
+1. Open **Google Chrome** and navigate to:
+
+2. Enable the **"Developer mode"** toggle in the top-right corner.
+
+3. Click the **"Load unpacked"** button.
+
+4. In the file dialog, select the `zkpass-web/chrome-extension` folder from this repository.
+
+> The zkPass extension should now appear in your list of extensions.
+
+
+## Step 6: Launch the Demo
+
+You can now test the full system.
+
+1. Make sure the backend server from **Step 4** is still running.
+2. Open the file `zkpass-web/demo/index.html` in **Google Chrome**.
+3. You should now be able to interact with the demo page and see the zkPass protocol in action!
+
+## License
+
+This project is licensed under the terms of the [LICENSE](LICENSE) file.
