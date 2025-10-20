@@ -22,8 +22,8 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 - [Security & Privacy Overview](#security--privacy-overview)
 - [Author & Contact](#author--contact)
 - [License](#license)
----
 
+---
 ### Hardware
 
 - ESP32 Development Board
