@@ -15,7 +15,11 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 - [License](#license)
 
 ---
+### Demo Video
 
+[Demo](media/demo.mp4)
+
+---
 ### Hardware
 
 - ESP32 Development Board
@@ -89,14 +93,13 @@ Connect the components using the I2C interface as follows:
 
 ## Step 3: Configure the ESP32
 
-Navigate to the backend directory:
-Install Python dependencies:
+Navigate to the backend directory And Install Python dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-This step sends the necessary configuration from your computer to the freshly programmed ESP32.
 
+This step sends the necessary configuration from your computer to the freshly programmed ESP32.
 1. Navigate to the project directory:
    ```bash
    cd esp32
@@ -113,8 +116,7 @@ Follow any on-screen prompts to complete the configuration.
 
 The backend server manages communication between the ESP32 and the web client.
 
-   Navigate to the backend directory:
-   Start the server:
+   Navigate to the backend directory And Start the server
    ```bash
    cd zkpass-web/backend
    python server.py
@@ -152,11 +154,11 @@ You can now test the full system.
 
 **Why zkPass Matters**
 
-zkPass leverages **Zero-Knowledge Proofs (ZKPs)** to enable strong, privacy-preserving authentication. With ZKPs, a user can prove they possess valid credentials **without revealing the credentials themselves**—eliminating risks of phishing, replay attacks, and credential theft.
+zkPass leverages **Zero-Knowledge Proofs (ZKPs)** to enable strong, privacy-preserving authentication. With ZKPs, a user can prove they possess valid credentials **without revealing the credentials themselves**, eliminating risks of phishing, replay attacks, and credential theft.
 
 **End-to-End Hardware Security**
 
-- All sensitive cryptographic operations—including key generation, AES-256 encryption, and ZKP computations—are performed **entirely within the ESP32’s secure environment**.
+- All sensitive cryptographic operations(including key generation, AES-256 encryption, and ZKP computations)are performed **entirely within the ESP32’s secure environment**.
 - **No private data ever leaves the device**. Credentials, keys, and intermediate values remain isolated in the ESP32’s memory.
 - Communication with the backend and browser is limited to **public challenges and zero-knowledge responses**, ensuring zero leakage of personal or identifying information.
 - The system uses **AES-256** for internal data protection, aligned with modern cryptographic best practices.
