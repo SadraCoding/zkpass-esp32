@@ -2,6 +2,8 @@
 
 This repository contains the full implementation of the **zkPass protocol**, a hardware-based authentication system utilizing an **ESP32 microcontroller**, an **SSD1306 OLED display**, a **Python backend**, and a **client-side Chrome Extension**.
 
+![demo.png](media/demo.png)
+
 ## Table of Contents
 
 - [Step 1: Hardware Assembly](#step-1-hardware-assembly)
