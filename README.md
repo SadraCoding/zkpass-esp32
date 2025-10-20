@@ -11,6 +11,7 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 </div>
 
 ---
+
 ## Table of Contents
 
 - [Step 1: Hardware Assembly](#step-1-hardware-assembly)
@@ -24,6 +25,7 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 - [License](#license)
 
 ---
+
 ### Hardware
 
 - ESP32 Development Board
@@ -38,6 +40,8 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 - Python 3.8+
 - Google Chrome
 - Git
+
+---
 
 ## Step 1: Hardware Assembly
 
@@ -61,6 +65,8 @@ Connect the components using the I2C interface as follows:
 | GND         | GND       | Ground             |
 | SCL         | GPIO 22   | Serial Clock       |
 | SDA         | GPIO 21   | Serial Data        |
+
+---
 
 ## Step 2: Program the ESP32
 
@@ -94,6 +100,8 @@ Connect the components using the I2C interface as follows:
 2. Select your board (e.g., **DOIT ESP32 DEVKIT V1**) under **Tools > Board > ESP32 Arduino**.
 3. Select the correct **Port** under **Tools > Port**.
 4. Click the **"Upload"** button (right arrow icon).
+
+---
 
 ## Step 3: Configure the ESP32
 
@@ -129,7 +137,6 @@ The backend server manages communication between the ESP32 and the web client.
 
 ---
 
-
 ## Step 5: Install the Chrome Extension
 
 The extension allows the web demo to interface with the backend.
@@ -144,6 +151,7 @@ The extension allows the web demo to interface with the backend.
 
 > The zkPass extension should now appear in your list of extensions.
 
+---
 
 ## Step 6: Launch the Demo
 
@@ -153,6 +161,7 @@ You can now test the full system.
 2. Open the file `zkpass-web/demo/index.html` in **Google Chrome**.
 3. You should now be able to interact with the demo page and see the zkPass protocol in action!
 
+---
 
 ## Security & Privacy Overview
 
@@ -168,6 +177,8 @@ zkPass leverages **Zero-Knowledge Proofs (ZKPs)** to enable strong, privacy-pres
 - The system uses **AES-256** for internal data protection, aligned with modern cryptographic best practices.
 
 This design ensures that even if the host computer or network is compromised, your identity remains safe.
+
+---
 
 ## Author & Contact
 
