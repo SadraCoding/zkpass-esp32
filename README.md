@@ -4,6 +4,13 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 
 ![demo.png](media/demo.png)
 
+### Video Demo
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/480c70c2-6ea1-4d93-a931-5ff00d78fa48" width="70%" poster=""> </video>
+</div>
+---
+
 ## Table of Contents
 
 - [Step 1: Hardware Assembly](#step-1-hardware-assembly)
@@ -15,15 +22,8 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 - [Security & Privacy Overview](#security--privacy-overview)
 - [Author & Contact](#author--contact)
 - [License](#license)
-
 ---
-### Video Demo
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/480c70c2-6ea1-4d93-a931-5ff00d78fa48" width="70%" poster=""> </video>
-</div>
-
----
 ### Hardware
 
 - ESP32 Development Board
