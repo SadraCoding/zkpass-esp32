@@ -17,7 +17,7 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 ---
 ### Demo Video
 
-[Demo](media/demo.mp4)
+https://github.com/user-attachments/assets/480c70c2-6ea1-4d93-a931-5ff00d78fa48
 
 ---
 ### Hardware
