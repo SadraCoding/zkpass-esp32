@@ -4,6 +4,8 @@ This repository contains the full implementation of the **zkPass protocol**, a h
 
 ![demo.png](media/demo.png)
 
+---
+
 ### Video Demo
 
 <div align="center">
