@@ -184,8 +184,8 @@ This design ensures that even if the host computer or network is compromised, yo
 
 ## Author & Contact
 
-Developed with care by **Sadra Milani Moghaddam**.  
-🌐 Learn more at: [https://sadramilani.ir](https://sadramilani.ir)
+Developed with care by **SadraCoding**.  
+🌐 Learn more at: [Github](https://github.com/SadraCoding)
 
 ## License
 
